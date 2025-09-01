@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSchool } from "../context/SchoolContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -8,7 +9,9 @@ function Login() {
   });
 
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const { setUser } = useSchool();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -20,6 +23,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
+    setLoading(true);
 
     try {
       const response = await fetch("http://localhost:5000/api/users/login", {
@@ -31,13 +35,17 @@ function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage(data.message);
-        setUser(data.user); // Set logged in user in context
+        setUser(data.user);
+        setMessage(data.message || "Login successful!");
+        localStorage.setItem("token", data.token); // optional: store token
+        navigate("/"); // redirect to homepage
       } else {
-        setMessage(data.message);
+        setMessage(data.message || "Login failed.");
       }
     } catch (error) {
       setMessage("Something went wrong. Try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -66,17 +74,24 @@ function Login() {
             required
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
+
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition"
+            disabled={loading}
+            className={`w-full font-semibold py-2 rounded-lg transition ${
+              loading
+                ? "bg-blue-300 cursor-not-allowed"
+                : "bg-blue-500 hover:bg-blue-600 text-white"
+            }`}
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+
         {message && (
           <p
             className={`mt-4 text-center font-medium ${
-              message.includes("successful")
+              message.toLowerCase().includes("success")
                 ? "text-green-600"
                 : "text-red-500"
             }`}

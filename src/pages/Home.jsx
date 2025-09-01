@@ -31,7 +31,7 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
             <Link
               to="/admission"
-              className="text-white bg-white/10 px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-bounce-in"
+              className={`text-white bg-${theme.primary} px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-xl animate-bounce-in`}
             >
               Apply Now
             </Link>
