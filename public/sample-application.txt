@@ -1,0 +1,57 @@
+SCHOOL ADMISSION APPLICATION FORM
+==================================
+
+Application Date: [Insert Date]
+
+APPLICANT INFORMATION
+---------------------
+Full Name: _______________________________
+Date of Birth: ___________________________
+Gender: __________
+Nationality: _____________________________
+Address: ________________________________
+_________________________________________
+City: _______________ State: _____ Zip: _____
+Phone: _______________ Email: _______________
+
+PARENT/GUARDIAN INFORMATION
+---------------------------
+Parent/Guardian Name: _____________________
+Relationship: _____________________________
+Phone: _______________ Email: _______________
+
+ACADEMIC INFORMATION
+--------------------
+Current Grade Level: _____________________
+Previous School: __________________________
+GPA: ___________ Graduation Year: ________
+
+PROGRAM OF INTEREST
+-------------------
+Grade Level Applying For: _________________
+Preferred Start Date: _____________________
+
+REQUIRED DOCUMENTS
+------------------
+□ Completed Application Form
+□ Academic Transcripts
+□ Birth Certificate
+□ Immunization Records
+□ Two Recommendation Letters
+□ Application Fee Receipt
+
+DECLARATION
+-----------
+I hereby certify that the information provided is true and complete to the best of my knowledge.
+
+Applicant Signature: _____________________ Date: __________
+
+Parent/Guardian Signature: _______________ Date: __________
+
+FOR OFFICE USE ONLY
+-------------------
+Application ID: _______________
+Review Date: _________________
+Decision: ____________________
+Comments: ____________________
+_________________________________________
