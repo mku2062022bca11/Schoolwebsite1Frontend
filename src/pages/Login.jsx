@@ -26,7 +26,8 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/login", {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      const response = await fetch(`${backendUrl}/api/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

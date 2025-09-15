@@ -19,6 +19,9 @@ const Contact = () => {
   const { theme } = useTheme();
   const { user } = useSchool();
 
+  const backendUrl =
+    import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -26,7 +29,7 @@ const Contact = () => {
     setSubmitError('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/contact', formData);
+      const response = await axios.post(`${backendUrl}/api/users/contact`, formData);
       setSubmitMessage(response.data.message);
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (error) {

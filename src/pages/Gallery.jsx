@@ -10,6 +10,7 @@ const Gallery = () => {
   const [error, setError] = useState(null);
 
   const { theme } = useTheme();
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
   const filters = [
     { id: "all", label: "All Photos" },
@@ -41,7 +42,7 @@ const Gallery = () => {
       setError(null);
 
       const res = await axios.post(
-        "http://localhost:5000/api/gallery/upload",
+        `${backendUrl}/api/gallery/upload`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
@@ -62,7 +63,7 @@ const Gallery = () => {
     const fetchImages = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/gallery/");
+        const res = await axios.get(`${backendUrl}/api/gallery/`);
         setPhotos(res.data);
       } catch (err) {
         console.error("Fetching images failed", err);
@@ -83,7 +84,7 @@ const Gallery = () => {
 
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:5000/api/gallery/${id}`);
+      await axios.delete(`${backendUrl}/api/gallery/${id}`);
       
       // Remove the deleted image from the state
       setPhotos(prev => prev.filter(photo => photo._id !== id));
